@@ -65,7 +65,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 104);
+            panel1.Size = new Size(800, 127);
             panel1.TabIndex = 0;
             panel1.Paint += panel1_Paint;
             // 
@@ -75,7 +75,7 @@
             pictureBox1.Image = Properties.Resources.buy;
             pictureBox1.Location = new Point(0, 0);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(116, 104);
+            pictureBox1.Size = new Size(116, 127);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
@@ -84,7 +84,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Arial Black", 18F, FontStyle.Bold);
-            label1.Location = new Point(122, 30);
+            label1.Location = new Point(122, 44);
             label1.Name = "label1";
             label1.Size = new Size(188, 42);
             label1.TabIndex = 0;
@@ -95,10 +95,10 @@
             tabControl1.Controls.Add(tabPagePayModeList);
             tabControl1.Controls.Add(tabPagePayModeDetail);
             tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(0, 104);
+            tabControl1.Location = new Point(0, 127);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(800, 346);
+            tabControl1.Size = new Size(800, 323);
             tabControl1.TabIndex = 1;
             // 
             // tabPagePayModeList
@@ -114,13 +114,14 @@
             tabPagePayModeList.Location = new Point(4, 29);
             tabPagePayModeList.Name = "tabPagePayModeList";
             tabPagePayModeList.Padding = new Padding(3);
-            tabPagePayModeList.Size = new Size(792, 313);
+            tabPagePayModeList.Size = new Size(792, 290);
             tabPagePayModeList.TabIndex = 0;
             tabPagePayModeList.Text = "Pay Mode List";
             tabPagePayModeList.UseVisualStyleBackColor = true;
             // 
             // BtnClose
             // 
+            BtnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnClose.Image = Properties.Resources.cerrar;
             BtnClose.Location = new Point(582, 245);
             BtnClose.Name = "BtnClose";
@@ -130,6 +131,7 @@
             // 
             // BtnDelete
             // 
+            BtnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnDelete.Image = Properties.Resources.delete;
             BtnDelete.Location = new Point(582, 179);
             BtnDelete.Name = "BtnDelete";
@@ -139,6 +141,7 @@
             // 
             // BtnSearch
             // 
+            BtnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnSearch.Image = Properties.Resources.search_small;
             BtnSearch.Location = new Point(508, 24);
             BtnSearch.Name = "BtnSearch";
@@ -149,6 +152,7 @@
             // 
             // BtnEdit
             // 
+            BtnEdit.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnEdit.Image = Properties.Resources.edit;
             BtnEdit.Location = new Point(582, 113);
             BtnEdit.Name = "BtnEdit";
@@ -158,6 +162,7 @@
             // 
             // BtnNew
             // 
+            BtnNew.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BtnNew.Image = Properties.Resources._new;
             BtnNew.Location = new Point(582, 47);
             BtnNew.Name = "BtnNew";
@@ -167,17 +172,19 @@
             // 
             // DgPayMode
             // 
+            DgPayMode.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DgPayMode.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgPayMode.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DgPayMode.Location = new Point(11, 76);
             DgPayMode.Name = "DgPayMode";
             DgPayMode.RowHeadersWidth = 51;
-            DgPayMode.Size = new Size(541, 229);
+            DgPayMode.Size = new Size(541, 206);
             DgPayMode.TabIndex = 3;
             DgPayMode.CellContentClick += dataGridView1_CellContentClick;
             // 
             // TxtSearch
             // 
+            TxtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             TxtSearch.Location = new Point(11, 32);
             TxtSearch.Name = "TxtSearch";
             TxtSearch.PlaceholderText = "Data to search";
