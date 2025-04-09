@@ -9,7 +9,7 @@ namespace Supermarket_mvp.Views
     internal interface IProductView
     {
         string ProductId { get; set; }
-        string ProductName { get; set; }
+        string ProductNameText { get; set; }
         string ProductPrice { get; set; }
 
         string SearchValue { get; set; }
