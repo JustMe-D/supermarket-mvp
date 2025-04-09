@@ -22,6 +22,8 @@ namespace Supermarket_mvp.Views
             AssociateAndRaiseViewEvents();
 
             tabControl1.TabPages.Remove(tabPageProductDetail);
+
+            BtnClose.Click += delegate { this.Close(); };
         }
 
         private void AssociateAndRaiseViewEvents()
@@ -84,6 +86,31 @@ namespace Supermarket_mvp.Views
         public void SetProductListBindingSource(BindingSource productList)
         {
             DgProduct.DataSource = productList;
+        }
+        private static ProductView instance;
+
+        public static ProductView GetInstance(Form parentConainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new ProductView();
+                instance.MdiParent = parentConainer;
+
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                
+                    instance.BringToFront();
+                
+            }
+
+                return instance;
         }
         private void label1_Click(object sender, EventArgs e)
         {
