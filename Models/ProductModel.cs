@@ -18,10 +18,6 @@ namespace Supermarket_mvp.Models
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Product name must be between 3 and 50 characters")]
         public string Name { get; set; }
 
-        [DisplayName("Description")]
-        [StringLength(200, ErrorMessage = "Description cannot exceed 200 characters")]
-        public string Description { get; set; }
-
         [DisplayName("Price")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
         public decimal Price { get; set; }

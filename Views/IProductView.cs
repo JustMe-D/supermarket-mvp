@@ -10,7 +10,6 @@ namespace Supermarket_mvp.Views
     {
         string ProductId { get; set; }
         string ProductName { get; set; }
-        string ProductDescription { get; set; }
         string ProductPrice { get; set; }
 
         string SearchValue { get; set; }
