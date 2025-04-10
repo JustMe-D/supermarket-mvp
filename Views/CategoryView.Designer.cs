@@ -39,17 +39,17 @@
             BtnNew = new Button();
             DgCategory = new DataGridView();
             BtnSearch = new Button();
-            txtSearch = new TextBox();
+            TxtSearch = new TextBox();
             label2 = new Label();
             tabPageCategoryDetail = new TabPage();
-            label3 = new Label();
-            TxtCategoryId = new TextBox();
-            label4 = new Label();
-            TxtCategoryName = new TextBox();
-            label5 = new Label();
-            textBox1 = new TextBox();
-            BtnSave = new Button();
             BtnCancel = new Button();
+            BtnSave = new Button();
+            TxtCategoryDescription = new TextBox();
+            label5 = new Label();
+            TxtCategoryName = new TextBox();
+            label4 = new Label();
+            TxtCategoryId = new TextBox();
+            label3 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
@@ -109,12 +109,12 @@
             tabPageCategoryList.Controls.Add(BtnNew);
             tabPageCategoryList.Controls.Add(DgCategory);
             tabPageCategoryList.Controls.Add(BtnSearch);
-            tabPageCategoryList.Controls.Add(txtSearch);
+            tabPageCategoryList.Controls.Add(TxtSearch);
             tabPageCategoryList.Controls.Add(label2);
             tabPageCategoryList.Location = new Point(4, 29);
             tabPageCategoryList.Name = "tabPageCategoryList";
             tabPageCategoryList.Padding = new Padding(3);
-            tabPageCategoryList.Size = new Size(725, 302);
+            tabPageCategoryList.Size = new Size(745, 325);
             tabPageCategoryList.TabIndex = 0;
             tabPageCategoryList.Text = "Category List";
             tabPageCategoryList.UseVisualStyleBackColor = true;
@@ -173,13 +173,13 @@
             BtnSearch.TabIndex = 2;
             BtnSearch.UseVisualStyleBackColor = true;
             // 
-            // txtSearch
+            // TxtSearch
             // 
-            txtSearch.Location = new Point(27, 51);
-            txtSearch.Name = "txtSearch";
-            txtSearch.PlaceholderText = "Data to Search";
-            txtSearch.Size = new Size(374, 27);
-            txtSearch.TabIndex = 1;
+            TxtSearch.Location = new Point(27, 51);
+            TxtSearch.Name = "TxtSearch";
+            TxtSearch.PlaceholderText = "Data to Search";
+            TxtSearch.Size = new Size(374, 27);
+            TxtSearch.TabIndex = 1;
             // 
             // label2
             // 
@@ -194,7 +194,7 @@
             // 
             tabPageCategoryDetail.Controls.Add(BtnCancel);
             tabPageCategoryDetail.Controls.Add(BtnSave);
-            tabPageCategoryDetail.Controls.Add(textBox1);
+            tabPageCategoryDetail.Controls.Add(TxtCategoryDescription);
             tabPageCategoryDetail.Controls.Add(label5);
             tabPageCategoryDetail.Controls.Add(TxtCategoryName);
             tabPageCategoryDetail.Controls.Add(label4);
@@ -208,55 +208,14 @@
             tabPageCategoryDetail.Text = "Category Detail";
             tabPageCategoryDetail.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // BtnCancel
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(24, 13);
-            label3.Name = "label3";
-            label3.Size = new Size(86, 20);
-            label3.TabIndex = 0;
-            label3.Text = "Category Id";
-            // 
-            // TxtCategoryId
-            // 
-            TxtCategoryId.Location = new Point(24, 36);
-            TxtCategoryId.Name = "TxtCategoryId";
-            TxtCategoryId.Size = new Size(202, 27);
-            TxtCategoryId.TabIndex = 1;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(24, 76);
-            label4.Name = "label4";
-            label4.Size = new Size(113, 20);
-            label4.TabIndex = 2;
-            label4.Text = "Category Name";
-            // 
-            // TxtCategoryName
-            // 
-            TxtCategoryName.Location = new Point(24, 99);
-            TxtCategoryName.Name = "TxtCategoryName";
-            TxtCategoryName.PlaceholderText = "Category Name";
-            TxtCategoryName.Size = new Size(304, 27);
-            TxtCategoryName.TabIndex = 3;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(24, 138);
-            label5.Name = "label5";
-            label5.Size = new Size(149, 20);
-            label5.TabIndex = 4;
-            label5.Text = "Category Description";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(24, 161);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(304, 69);
-            textBox1.TabIndex = 5;
+            BtnCancel.Image = Properties.Resources.cancel;
+            BtnCancel.Location = new Point(161, 246);
+            BtnCancel.Name = "BtnCancel";
+            BtnCancel.Size = new Size(79, 53);
+            BtnCancel.TabIndex = 7;
+            BtnCancel.UseVisualStyleBackColor = true;
             // 
             // BtnSave
             // 
@@ -267,14 +226,55 @@
             BtnSave.TabIndex = 6;
             BtnSave.UseVisualStyleBackColor = true;
             // 
-            // BtnCancel
+            // TxtCategoryDescription
             // 
-            BtnCancel.Image = Properties.Resources.cancel;
-            BtnCancel.Location = new Point(161, 246);
-            BtnCancel.Name = "BtnCancel";
-            BtnCancel.Size = new Size(79, 53);
-            BtnCancel.TabIndex = 7;
-            BtnCancel.UseVisualStyleBackColor = true;
+            TxtCategoryDescription.Location = new Point(24, 161);
+            TxtCategoryDescription.Multiline = true;
+            TxtCategoryDescription.Name = "TxtCategoryDescription";
+            TxtCategoryDescription.Size = new Size(304, 69);
+            TxtCategoryDescription.TabIndex = 5;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(24, 138);
+            label5.Name = "label5";
+            label5.Size = new Size(149, 20);
+            label5.TabIndex = 4;
+            label5.Text = "Category Description";
+            // 
+            // TxtCategoryName
+            // 
+            TxtCategoryName.Location = new Point(24, 99);
+            TxtCategoryName.Name = "TxtCategoryName";
+            TxtCategoryName.PlaceholderText = "Category Name";
+            TxtCategoryName.Size = new Size(304, 27);
+            TxtCategoryName.TabIndex = 3;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(24, 76);
+            label4.Name = "label4";
+            label4.Size = new Size(113, 20);
+            label4.TabIndex = 2;
+            label4.Text = "Category Name";
+            // 
+            // TxtCategoryId
+            // 
+            TxtCategoryId.Location = new Point(24, 36);
+            TxtCategoryId.Name = "TxtCategoryId";
+            TxtCategoryId.Size = new Size(202, 27);
+            TxtCategoryId.TabIndex = 1;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(24, 13);
+            label3.Name = "label3";
+            label3.Size = new Size(86, 20);
+            label3.TabIndex = 0;
+            label3.Text = "Category Id";
             // 
             // CategoryView
             // 
@@ -306,7 +306,7 @@
         private TabControl tabControl1;
         private TabPage tabPageCategoryList;
         private Button BtnSearch;
-        private TextBox txtSearch;
+        private TextBox TxtSearch;
         private Label label2;
         private TabPage tabPageCategoryDetail;
         private Button BtnNew;
@@ -314,7 +314,7 @@
         private Button BtnClose;
         private Button BtnDelete;
         private Button BtnEdit;
-        private TextBox textBox1;
+        private TextBox TxtCategoryDescription;
         private Label label5;
         private TextBox TxtCategoryName;
         private Label label4;
