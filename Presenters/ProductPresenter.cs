@@ -55,27 +55,77 @@ namespace Supermarket_mvp.Presenters
 
         private void AddNewProduct(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            view.IsEdit = false;
         }
 
         private void LoadSelectedProductToEdit(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var product = (ProductModel) productBindingSource.Current;
+
+            view.ProductId = product.Id.ToString();
+            view.ProductNameText = product.Name;
+            view.ProductNameText = product.Price.ToString();
         }
 
         private void DeleteSelectedProduct(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var payMode = (ProductModel)productBindingSource.Current;
+                repository.Delete(payMode.Id);
+                view.IsSuccessful = true;
+                view.Message = "Product deleted successfully";
+                LoadAllProductList();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = "An error ocurred, could'nt delete pay mode";
+            }
         }
 
         private void SaveProduct(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();    
+            var product = new ProductModel();
+
+            product.Id = Convert.ToInt32(view.ProductId);
+            product.Name = view.ProductNameText;
+            product.Price = Convert.ToDecimal(view.ProductPrice);
+            
+
+            try
+            {
+                new Common.ModelDataValidation().Validate(product);
+                if (view.IsEdit)
+                {
+                    repository.Edit(product);
+                    view.Message = "Product edited successfully";
+                }
+                else
+                {
+                    repository.Add(product);
+                    view.Message = "Product added successfully";
+                }
+                view.IsSuccessful = true;
+                LoadAllProductList();
+                CleanViewFields();
+            }
+            catch (Exception ex)
+            {
+                view.IsSuccessful = false;
+                view.Message = ex.Message;
+            }
+        }
+        private void CleanViewFields()
+        {
+            view.ProductId = "0";
+            view.ProductNameText = "";
+            view.ProductPrice = "";
         }
 
         private void CancelProduct(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanViewFields();
         }
 
 

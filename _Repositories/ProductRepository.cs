@@ -19,17 +19,48 @@ namespace Supermarket_mvp._Repositories
 
         public void Add(ProductModel productModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"INSERT INTO Product(Product_Name, Product_Price) 
+                                        VALUES(@name, @price)";
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = productModel.Name;
+                command.Parameters.Add("@price", SqlDbType.Decimal).Value = productModel.Price;
+                command.ExecuteNonQuery();
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"DELETE FROM Product WHERE Product_Id = @id";
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.ExecuteNonQuery();
+            }
         }
 
         public void Edit(ProductModel productModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"UPDATE Product 
+                                        SET Product_Name = @name, 
+                                        Product_Price = @price
+                                        WHERE Product_Id = @id";
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = productModel.Name;
+                command.Parameters.Add("@price", SqlDbType.Decimal).Value = productModel.Price;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = productModel.Id;
+                command.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<ProductModel> GetAll()
