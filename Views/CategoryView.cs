@@ -27,6 +27,8 @@ namespace Supermarket_mvp.Views
         {
             BtnSearch.Click += delegate { SearchEvent?.Invoke(this, EventArgs.Empty); };
 
+            BtnClose.Click += delegate { this.Close(); };
+
             TxtSearch.KeyDown += (s, e) =>
             {
                 if (e.KeyCode == Keys.Enter)
@@ -82,6 +84,28 @@ namespace Supermarket_mvp.Views
         public void SetCategoryListBildingSource(BindingSource categoryList)
         {
             DgCategory.DataSource = categoryList;
+        }
+        private static CategoryView instance;
+
+        public static CategoryView GetInstance(Form parentContainer)
+        {
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new CategoryView();
+                instance.MdiParent = parentContainer;
+
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal;
+                }
+                instance.BringToFront();
+            }
+                return instance;
         }
 
         private void label1_Click(object sender, EventArgs e)

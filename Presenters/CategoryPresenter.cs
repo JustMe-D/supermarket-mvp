@@ -69,7 +69,7 @@ namespace Supermarket_mvp.Presenters
         private void SearchCategory(object? sender, EventArgs e)
         {
             bool emptyValue = string.IsNullOrWhiteSpace(this.view.SearchValue);
-            if (emptyValue)
+            if (emptyValue == false)
             {
                 categoryList = repository.GetByValue(this.view.SearchValue);
             }

@@ -21,11 +21,6 @@ namespace Supermarket_mvp
             string sqlConnectionString = Settings.Default.SqlConnection;
             IMainView view = new MainView();
             new MainPresenter(view, sqlConnectionString);
-
-            ICategoryView categoryView = new CategoryView();
-            ICategoryRepository categoryRepository = new CategoryRepository(sqlConnectionString);
-            new CategoryPresenter(categoryView, categoryRepository);
-
             Application.Run((Form) view);
 
         }

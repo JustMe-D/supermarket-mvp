@@ -65,7 +65,7 @@ namespace Supermarket_mvp._Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = @"SELECT * FORM Category
+                command.CommandText = @"SELECT * FROM Category
                                         WHERE Category_Id = @id or Category_Name LIKE @name+ '%'
                                         ORDER BY Category_Id DESC"; 
                 command.Parameters.Add("@id", SqlDbType.Int).Value = categoryId;
