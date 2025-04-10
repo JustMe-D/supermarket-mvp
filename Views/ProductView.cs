@@ -164,7 +164,7 @@ namespace Supermarket_mvp.Views
         {
             if (!decimal.TryParse(TxtProductPrice.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out _))
             {
-                MessageBox.Show("Please enter a valid price (e.g., 5.99).", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter a valid price (example, 5.99).", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 e.Cancel = true;
             }
         }
