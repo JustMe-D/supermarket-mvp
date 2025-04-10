@@ -171,7 +171,8 @@ namespace Supermarket_mvp.Views
                     instance.WindowState = FormWindowState.Normal;
                 }
                 instance.BringToFront();
-            }return instance;
+            }
+            return instance;
         }
         
     }

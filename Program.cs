@@ -4,6 +4,7 @@ using Supermarket_mvp.Models;
 using Supermarket_mvp.Properties;
 using System.Configuration;
 using Supermarket_mvp.Presenters;
+using System.Globalization;
 
 namespace Supermarket_mvp
 {
@@ -15,6 +16,10 @@ namespace Supermarket_mvp
         [STAThread]
         static void Main()
         {
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
+            CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
+
+
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();

@@ -36,6 +36,50 @@ namespace Supermarket_mvp.Views
                     SearchEvent?.Invoke(this, EventArgs.Empty);
                 }
             };
+            BtnNew.Click += delegate { 
+                AddNewEvent?.Invoke(this, EventArgs.Empty); 
+                
+                tabControl1.TabPages.Remove(tabPageCategoryList);
+                tabControl1.TabPages.Add(tabPageCategoryDetail);
+                tabPageCategoryDetail.Text = "Add New Category";
+            };
+            BtnEdit.Click += delegate { 
+               
+                EditEvent?.Invoke(this, EventArgs.Empty);
+
+                tabControl1.TabPages.Remove(tabPageCategoryList);
+                tabControl1.TabPages.Add(tabPageCategoryDetail);
+                tabPageCategoryDetail.Text = "Edit Category";
+            };
+            BtnDelete.Click += delegate { 
+                var result = MessageBox.Show("Are you sure you want to delete this category?", "Warning", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    DeleteEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Message);
+                }
+
+
+            };
+            BtnSave.Click += delegate {
+                SaveEvent?.Invoke(this, EventArgs.Empty); 
+
+                if (isSuccessful)
+                {
+                    tabControl1.TabPages.Remove(tabPageCategoryDetail);
+                    tabControl1.TabPages.Add(tabPageCategoryList);
+                   
+                }
+                MessageBox.Show(Message);
+
+            };
+            BtnCancel.Click += delegate { 
+                CancelEvent?.Invoke(this, EventArgs.Empty); 
+
+                tabControl1.TabPages.Remove(tabPageCategoryDetail);
+                tabControl1.TabPages.Add(tabPageCategoryList);
+            };
         }
 
         public string CategoryId 
@@ -105,7 +149,7 @@ namespace Supermarket_mvp.Views
                 }
                 instance.BringToFront();
             }
-                return instance;
+            return instance;
         }
 
         private void label1_Click(object sender, EventArgs e)

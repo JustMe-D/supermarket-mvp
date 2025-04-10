@@ -19,6 +19,7 @@ namespace Supermarket_mvp.Views
         private string message;
         public ProductView()
         {
+            
             InitializeComponent();
             AssociateAndRaiseViewEvents();
 
@@ -152,31 +153,19 @@ namespace Supermarket_mvp.Views
                 {
                     instance.WindowState = FormWindowState.Normal;
                 }
-                
-                    instance.BringToFront();
-                
+                instance.BringToFront();
             }
 
-                return instance;
+            return instance;
         }
 
-        private void TxtProductPrice_Validating(object sender, CancelEventArgs e)
-        {
-            if (!decimal.TryParse(TxtProductPrice.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out _))
-            {
-                MessageBox.Show("Please enter a valid price (example, 5.99).", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                e.Cancel = true;
-            }
-        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void ProductView_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void label2_Click(object sender, EventArgs e)
         {

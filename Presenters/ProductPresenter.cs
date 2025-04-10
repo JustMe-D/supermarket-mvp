@@ -7,6 +7,7 @@ using Supermarket_mvp.Views;
 using Supermarket_mvp.Models;
 using System.Globalization;
 
+
 namespace Supermarket_mvp.Presenters
 {
     internal class ProductPresenter
@@ -65,7 +66,9 @@ namespace Supermarket_mvp.Presenters
 
             view.ProductId = product.Id.ToString();
             view.ProductNameText = product.Name;
-            view.ProductNameText = product.Price.ToString();
+            view.ProductPrice = product.Price.ToString();
+
+            view.IsEdit = true;
         }
 
         private void DeleteSelectedProduct(object? sender, EventArgs e)
@@ -91,11 +94,12 @@ namespace Supermarket_mvp.Presenters
 
             product.Id = Convert.ToInt32(view.ProductId);
             product.Name = view.ProductNameText;
-            product.Price = Convert.ToDecimal(view.ProductPrice, CultureInfo.InvariantCulture);
-            
+            product.Price = Convert.ToDecimal(view.ProductPrice);
 
             try
             {
+
+
                 new Common.ModelDataValidation().Validate(product);
                 if (view.IsEdit)
                 {

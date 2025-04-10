@@ -18,16 +18,43 @@ namespace Supermarket_mvp._Repositories
         }
         public void Add(CategoryModel categoryModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = connection.CreateCommand())
+            {
+                connection.Open();
+                command.CommandText = "INSERT INTO Category VALUES (@name, @description)";
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = categoryModel.Name;
+                command.Parameters.Add("@description", SqlDbType.NVarChar).Value = categoryModel.Description;
+                command.ExecuteNonQuery();
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = connection.CreateCommand())
+            {
+                connection.Open();
+                command.CommandText = "DELETE FROM Category WHERE Category_Id = @id";
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.ExecuteNonQuery();
+            }
+
         }
         public void Edit(CategoryModel categoryModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = connection.CreateCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"UPDATE Category SET Category_Name = @name,
+                                        Category_Description = @description WHERE Category_Id = @id";
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = categoryModel.Name;
+                command.Parameters.Add("@description", SqlDbType.NVarChar).Value = categoryModel.Description;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = categoryModel.Id;
+                command.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<CategoryModel> GetAll()

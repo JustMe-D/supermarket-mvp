@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Supermarket_mvp.Views;
 using Supermarket_mvp.Models;
 using Supermarket_mvp._Repositories;
+using System.Windows.Forms;
 
 namespace Supermarket_mvp.Presenters
 {
@@ -23,12 +24,16 @@ namespace Supermarket_mvp.Presenters
             this.mainView.ShowProductsView += ShowProductsView;
             this.mainView.ShowCategoryView += ShowCategoryView;
         }
+        
+        
 
         private void ShowCategoryView(object? sender, EventArgs e)
         {
             ICategoryView view = CategoryView.GetInstance((MainView)mainView);
             ICategoryRepository repository = new CategoryRepository(sqlConnectionString);
             new CategoryPresenter(view, repository);
+
+           
         }
 
         private void ShowProductsView(object? sender, EventArgs e)
@@ -36,6 +41,8 @@ namespace Supermarket_mvp.Presenters
             IProductView View = ProductView.GetInstance((MainView)mainView);
             IProductRepository Repository = new ProductRepository(sqlConnectionString);
             new ProductPresenter(View, Repository);
+
+           
         }
 
         private void ShowPayModeView(object? sender, EventArgs e)
@@ -44,6 +51,7 @@ namespace Supermarket_mvp.Presenters
             IPayModeView View = PayModeView.GetInstance((MainView)mainView);
             IPayModeRepository Repository = new PayModeRepository(sqlConnectionString);
             new PayModePresenter(View, Repository);
+
         }
     }
 }
