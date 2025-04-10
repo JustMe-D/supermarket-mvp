@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Supermarket_mvp.Views;
 using Supermarket_mvp.Models;
+using System.Globalization;
 
 namespace Supermarket_mvp.Presenters
 {
@@ -90,7 +91,7 @@ namespace Supermarket_mvp.Presenters
 
             product.Id = Convert.ToInt32(view.ProductId);
             product.Name = view.ProductNameText;
-            product.Price = Convert.ToDecimal(view.ProductPrice);
+            product.Price = Convert.ToDecimal(view.ProductPrice, CultureInfo.InvariantCulture);
             
 
             try

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -157,6 +158,15 @@ namespace Supermarket_mvp.Views
             }
 
                 return instance;
+        }
+
+        private void TxtProductPrice_Validating(object sender, CancelEventArgs e)
+        {
+            if (!decimal.TryParse(TxtProductPrice.Text, NumberStyles.Number, CultureInfo.InvariantCulture, out _))
+            {
+                MessageBox.Show("Please enter a valid price (e.g., 5.99).", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
+            }
         }
         private void label1_Click(object sender, EventArgs e)
         {
