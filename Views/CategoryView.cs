@@ -79,7 +79,7 @@ namespace Supermarket_mvp.Views
         public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
 
-        public void SetCategoryListBindingSource(BindingSource categoryList)
+        public void SetCategoryListBildingSource(BindingSource categoryList)
         {
             DgCategory.DataSource = categoryList;
         }
@@ -88,5 +88,7 @@ namespace Supermarket_mvp.Views
         {
 
         }
+
+        
     }
 }
