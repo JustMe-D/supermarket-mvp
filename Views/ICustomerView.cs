@@ -17,6 +17,11 @@ namespace Supermarket_mvp.Views
         string Customer_PhoneNumber { get; set; }
         string Customer_Email { get; set; }
 
+        string SearchValue { get; set; }
+        bool IsEdit { get; set; }
+        bool IsSuccesful { get; set; }
+        string Message { get; set; }
+
         event EventHandler SearchEvent;
         event EventHandler AddNewEvent;
         event EventHandler EditEvent;
