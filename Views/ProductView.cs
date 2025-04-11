@@ -19,7 +19,7 @@ namespace Supermarket_mvp.Views
         private string message;
         public ProductView()
         {
-            
+
             InitializeComponent();
             AssociateAndRaiseViewEvents();
 
@@ -39,23 +39,26 @@ namespace Supermarket_mvp.Views
                 }
             };
 
-            BtnNew.Click += delegate { 
+            BtnNew.Click += delegate
+            {
                 AddNewEvent?.Invoke(this, EventArgs.Empty);
-                
+
                 tabControl1.TabPages.Remove(tabPageProductList);
                 tabControl1.TabPages.Add(tabPageProductDetail);
                 tabPageProductDetail.Text = "Add New Product";
             };
-            BtnEdit.Click += delegate {
+            BtnEdit.Click += delegate
+            {
                 EditEvent?.Invoke(this, EventArgs.Empty);
 
                 tabControl1.TabPages.Remove(tabPageProductList);
                 tabControl1.TabPages.Add(tabPageProductDetail);
                 tabPageProductDetail.Text = "Edit New Product";
             };
-            BtnDelete.Click += delegate { 
+            BtnDelete.Click += delegate
+            {
                 var result = MessageBox.Show("Are you sure you want to delete the selected product?", "Warning", MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning );
+                    MessageBoxIcon.Warning);
 
                 if (result == DialogResult.Yes)
                 {
@@ -64,20 +67,22 @@ namespace Supermarket_mvp.Views
                 }
 
             };
-            BtnSave.Click += delegate {
+            BtnSave.Click += delegate
+            {
                 SaveEvent?.Invoke(this, EventArgs.Empty);
 
                 if (isSuccessful)
                 {
                     tabControl1.TabPages.Remove(tabPageProductDetail);
                     tabControl1.TabPages.Add(tabPageProductList);
-                    
+
                 }
                 MessageBox.Show(Message);
             };
 
-            BtnCancel.Click += delegate {
-                CancelEvent?.Invoke(this, EventArgs.Empty); 
+            BtnCancel.Click += delegate
+            {
+                CancelEvent?.Invoke(this, EventArgs.Empty);
 
                 tabControl1.TabPages.Remove(tabPageProductDetail);
                 tabControl1.TabPages.Add(tabPageProductList);
@@ -86,7 +91,18 @@ namespace Supermarket_mvp.Views
 
         }
 
-        public string ProductId 
+
+        public string SelectedCategoryId
+        {
+            get { return TxtCategoryId.Text; }
+            set { TxtCategoryId.Text = value; }
+        }
+        public string ProductStock
+        {
+            get { return TxtProductStock.Text; }
+            set { TxtProductStock.Text = value; }
+        }
+        public string ProductId
         {
             get { return TxtProductId.Text; }
             set { TxtProductId.Text = value; }
@@ -97,27 +113,27 @@ namespace Supermarket_mvp.Views
             get { return TxtProductName.Text; }
             set { TxtProductName.Text = value; }
         }
-        public string ProductPrice 
-        { 
+        public string ProductPrice
+        {
             get { return TxtProductPrice.Text; }
             set { TxtProductPrice.Text = value; }
         }
-        public string SearchValue 
-        { 
+        public string SearchValue
+        {
             get { return TxtSearch.Text; }
             set { TxtSearch.Text = value; }
         }
-        public bool IsEdit 
-        { 
+        public bool IsEdit
+        {
             get { return isEdit; }
             set { isEdit = value; }
         }
-        public bool IsSuccessful 
-        { 
+        public bool IsSuccessful
+        {
             get { return isSuccessful; }
             set { isSuccessful = value; }
         }
-        public string Message 
+        public string Message
         {
             get { return message; }
             set { message = value; }
@@ -160,12 +176,14 @@ namespace Supermarket_mvp.Views
         }
 
 
+
+
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        
+
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -177,5 +195,9 @@ namespace Supermarket_mvp.Views
 
         }
 
+        private void CmbCategoryId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

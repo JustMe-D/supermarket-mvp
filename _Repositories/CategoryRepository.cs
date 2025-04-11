@@ -59,6 +59,7 @@ namespace Supermarket_mvp._Repositories
 
         public IEnumerable<CategoryModel> GetAll()
         {
+
             var categoryList = new List<CategoryModel>();
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
@@ -93,7 +94,9 @@ namespace Supermarket_mvp._Repositories
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = @"SELECT * FROM Category
-                                        WHERE Category_Id = @id or Category_Name LIKE @name+ '%'
+                                        WHERE Category_Id = @id
+                                        OR Category_Name LIKE @name+ '%'
+                                        OR Category_Description LIKE @name+ '%'
                                         ORDER BY Category_Id DESC"; 
                 command.Parameters.Add("@id", SqlDbType.Int).Value = categoryId;
                 command.Parameters.Add("@name", SqlDbType.NVarChar).Value = categoryName;

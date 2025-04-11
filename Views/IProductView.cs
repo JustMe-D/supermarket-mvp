@@ -11,6 +11,8 @@ namespace Supermarket_mvp.Views
         string ProductId { get; set; }
         string ProductNameText { get; set; }
         string ProductPrice { get; set; }
+        string ProductStock { get; set; } 
+        string SelectedCategoryId { get; set; }
 
         string SearchValue { get; set; }
         bool IsEdit { get; set; }
@@ -24,6 +26,8 @@ namespace Supermarket_mvp.Views
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
         void SetProductListBindingSource(BindingSource productList);
+
+
         void Show();
     }
 

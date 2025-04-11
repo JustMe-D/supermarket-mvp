@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Supermarket_mvp.Views;
 using Supermarket_mvp.Models;
 using System.Globalization;
+using Supermarket_mvp._Repositories;
+
 
 
 namespace Supermarket_mvp.Presenters
@@ -17,11 +19,21 @@ namespace Supermarket_mvp.Presenters
     private BindingSource productBindingSource;
     private IEnumerable<ProductModel> productList;
 
+
+
         public ProductPresenter(IProductView view, IProductRepository repository)
         {
+
+           
+
+
             this.productBindingSource = new BindingSource();
             this.view = view;
             this.repository = repository;
+
+
+
+            this.productBindingSource.DataSource = new BindingSource();
 
             this.view.SearchEvent += SearchProduct;
             this.view.AddNewEvent += AddNewProduct;
@@ -35,6 +47,7 @@ namespace Supermarket_mvp.Presenters
             LoadAllProductList();
             this.view.Show();
         }
+        
         private void LoadAllProductList()
         {
             productList = repository.GetAll();
@@ -67,6 +80,8 @@ namespace Supermarket_mvp.Presenters
             view.ProductId = product.Id.ToString();
             view.ProductNameText = product.Name;
             view.ProductPrice = product.Price.ToString();
+            view.ProductStock = product.Stock.ToString(); // Asignar Stock
+            view.SelectedCategoryId = product.Category_Id.ToString(); // Asignar Category_Id
 
             view.IsEdit = true;
         }
@@ -95,6 +110,9 @@ namespace Supermarket_mvp.Presenters
             product.Id = Convert.ToInt32(view.ProductId);
             product.Name = view.ProductNameText;
             product.Price = Convert.ToDecimal(view.ProductPrice);
+            product.Stock = Convert.ToInt32(view.ProductStock); 
+            product.Category_Id = Convert.ToInt32(view.SelectedCategoryId);
+
 
             try
             {
@@ -126,6 +144,7 @@ namespace Supermarket_mvp.Presenters
             view.ProductId = "0";
             view.ProductNameText = "";
             view.ProductPrice = "";
+            view.SelectedCategoryId = "0";
         }
 
         private void CancelProduct(object? sender, EventArgs e)

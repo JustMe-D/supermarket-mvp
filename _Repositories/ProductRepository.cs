@@ -24,10 +24,11 @@ namespace Supermarket_mvp._Repositories
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = @"INSERT INTO Product(Product_Name, Product_Price) 
-                                        VALUES(@name, @price)";
+                command.CommandText = @"INSERT INTO Product VALUES(@name, @price, @stock, @category_id)";
                 command.Parameters.Add("@name", SqlDbType.NVarChar).Value = productModel.Name;
                 command.Parameters.Add("@price", SqlDbType.Decimal).Value = productModel.Price;
+                command.Parameters.Add("@stock", SqlDbType.Int).Value = productModel.Stock;
+                command.Parameters.Add("@category_id", SqlDbType.Int).Value = productModel.Category_Id;
                 command.ExecuteNonQuery();
             }
         }
@@ -54,10 +55,14 @@ namespace Supermarket_mvp._Repositories
                 command.Connection = connection;
                 command.CommandText = @"UPDATE Product 
                                         SET Product_Name = @name, 
-                                        Product_Price = @price
+                                        Product_Price = @price,
+                                        Stock = @stock, 
+                                        Category_Id = @categoryId
                                         WHERE Product_Id = @id";
                 command.Parameters.Add("@name", SqlDbType.NVarChar).Value = productModel.Name;
                 command.Parameters.Add("@price", SqlDbType.Decimal).Value = productModel.Price;
+                command.Parameters.Add("@stock", SqlDbType.Int).Value = productModel.Stock;
+                command.Parameters.Add("@categoryId", SqlDbType.Int).Value = productModel.Category_Id;
                 command.Parameters.Add("@id", SqlDbType.Int).Value = productModel.Id;
                 command.ExecuteNonQuery();
             }
@@ -80,6 +85,9 @@ namespace Supermarket_mvp._Repositories
                         productModel.Id = (int)reader["Product_Id"];
                         productModel.Name = reader["Product_Name"].ToString();
                         productModel.Price = (decimal)reader["Product_Price"];
+                        productModel.Stock = (int)reader["Stock"];
+                        productModel.Category_Id = (int)reader["Category_Id"];
+
                         productList.Add(productModel);
                     };
                 }
@@ -99,7 +107,9 @@ namespace Supermarket_mvp._Repositories
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = @"SELECT * FROM Product 
-                                        WHERE Product_Id = @id or Product_Name LIKE @name+ '%'
+                                        WHERE Product_Id = @id 
+                                        OR Product_Name LIKE @name+ '%'
+                                        OR Product_Price LIKE @price+ '%'  
                                         ORDER By Product_Id DESC";
                 command.Parameters.Add("@id", SqlDbType.Int).Value = productId;
                 command.Parameters.Add("@name", SqlDbType.NVarChar).Value = productName;
@@ -111,6 +121,8 @@ namespace Supermarket_mvp._Repositories
                         productModel.Id = (int)reader["Product_Id"];
                         productModel.Name = reader["Product_Name"].ToString();
                         productModel.Price = (decimal)reader["Product_Price"];
+                        productModel.Stock = (int)reader["Stock"];
+                        productModel.Category_Id = (int)reader["Category_Id"];
                         productlist.Add(productModel);
                     }
                 }

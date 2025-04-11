@@ -40,6 +40,7 @@ namespace Supermarket_mvp.Presenters
         {
             IProductView View = ProductView.GetInstance((MainView)mainView);
             IProductRepository Repository = new ProductRepository(sqlConnectionString);
+            
             new ProductPresenter(View, Repository);
 
            

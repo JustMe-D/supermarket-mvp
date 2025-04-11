@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Supermarket_mvp.Views;
 using Supermarket_mvp.Models;
+using Supermarket_mvp._Repositories;
 
 namespace Supermarket_mvp.Presenters
 {
@@ -15,6 +16,7 @@ namespace Supermarket_mvp.Presenters
         private BindingSource categoryBindingSource;
         private IEnumerable<CategoryModel> categoryList;
 
+        
         public CategoryPresenter(ICategoryView view, ICategoryRepository repository)
         {
             this.categoryBindingSource = new BindingSource();
@@ -60,6 +62,8 @@ namespace Supermarket_mvp.Presenters
                 {
                     repository.Add(category);
                     view.Message = "Category added successfully";
+
+                    
                 }
                 view.IsSuccessful = true;
                 LoadAllCategoryList();

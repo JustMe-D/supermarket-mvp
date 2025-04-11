@@ -42,6 +42,9 @@
             TxtSearch = new TextBox();
             label2 = new Label();
             tabPageProductDetail = new TabPage();
+            TxtProductStock = new TextBox();
+            label7 = new Label();
+            label6 = new Label();
             BtnCancel = new Button();
             BtnSave = new Button();
             label5 = new Label();
@@ -50,6 +53,7 @@
             label4 = new Label();
             TxtProductId = new TextBox();
             label3 = new Label();
+            TxtCategoryId = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tabControl1.SuspendLayout();
@@ -204,6 +208,10 @@
             // 
             // tabPageProductDetail
             // 
+            tabPageProductDetail.Controls.Add(TxtCategoryId);
+            tabPageProductDetail.Controls.Add(TxtProductStock);
+            tabPageProductDetail.Controls.Add(label7);
+            tabPageProductDetail.Controls.Add(label6);
             tabPageProductDetail.Controls.Add(BtnCancel);
             tabPageProductDetail.Controls.Add(BtnSave);
             tabPageProductDetail.Controls.Add(label5);
@@ -219,6 +227,32 @@
             tabPageProductDetail.TabIndex = 1;
             tabPageProductDetail.Text = "Product Detail";
             tabPageProductDetail.UseVisualStyleBackColor = true;
+            // 
+            // TxtProductStock
+            // 
+            TxtProductStock.Location = new Point(410, 190);
+            TxtProductStock.Name = "TxtProductStock";
+            TxtProductStock.PlaceholderText = "Product Stock";
+            TxtProductStock.Size = new Size(214, 27);
+            TxtProductStock.TabIndex = 11;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(410, 167);
+            label7.Name = "label7";
+            label7.Size = new Size(45, 20);
+            label7.TabIndex = 10;
+            label7.Text = "Stock";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(410, 91);
+            label6.Name = "label6";
+            label6.Size = new Size(69, 20);
+            label6.TabIndex = 9;
+            label6.Text = "Category";
             // 
             // BtnCancel
             // 
@@ -291,6 +325,13 @@
             label3.TabIndex = 0;
             label3.Text = "Product Id";
             // 
+            // TxtCategoryId
+            // 
+            TxtCategoryId.Location = new Point(410, 114);
+            TxtCategoryId.Name = "TxtCategoryId";
+            TxtCategoryId.Size = new Size(214, 27);
+            TxtCategoryId.TabIndex = 12;
+            // 
             // ProductView
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -336,5 +377,9 @@
         private Button BtnSave;
         private Label label5;
         private TextBox TxtProductPrice;
+        private TextBox TxtProductStock;
+        private Label label7;
+        private Label label6;
+        private TextBox TxtCategoryId;
     }
 }

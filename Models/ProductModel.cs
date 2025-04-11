@@ -21,5 +21,15 @@ namespace Supermarket_mvp.Models
         [DisplayName("Price")]
         [Range(0.01, double.MaxValue, ErrorMessage = "Price must be greater than 0")]
         public decimal Price { get; set; }
+
+        [DisplayName("Product Stock")]
+        [Required(ErrorMessage = "Product Stock is required")]
+        [RegularExpression(@"^\d+$", ErrorMessage = "Product Stock must be a number")]
+        [Range(0, int.MaxValue, ErrorMessage = "Stock must be a non-negative number")]
+        public int Stock { get; set; }
+
+        [DisplayName("Category Id")]
+        [Required(ErrorMessage = "Category Id is required")]
+        public int Category_Id { get; set; }
     }
 }
