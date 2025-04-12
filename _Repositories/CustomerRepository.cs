@@ -18,17 +18,64 @@ namespace Supermarket_mvp._Repositories
         }
         public void Add(CustomerModel customerModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"INSERT INTO Customer (Customer_Document, Customer_FirstName, Customer_LastName, 
+                                        Customer_Address, Customer_Birthday, Customer_PhoneNumber, Customer_Email) 
+                                        VALUES (@document, @firstName, @lastName, @address, @birthday, @phoneNumber, @email)";
+                command.Parameters.Add("@document", SqlDbType.NVarChar).Value = customerModel.DocumentNumber;
+                command.Parameters.Add("@firstName", SqlDbType.NVarChar).Value = customerModel.FirstName;
+                command.Parameters.Add("@lastName", SqlDbType.NVarChar).Value = customerModel.LastName;
+                command.Parameters.Add("@address", SqlDbType.NVarChar).Value = customerModel.Address;
+                command.Parameters.Add("@birthday", SqlDbType.DateTime).Value = customerModel.Birthday;
+                command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = customerModel.PhoneNumber;
+                command.Parameters.Add("@email", SqlDbType.NVarChar).Value = customerModel.Email;
+                command.ExecuteNonQuery();
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "DELETE FROM Customer WHERE Customer_Id = @id";
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.ExecuteNonQuery();
+            }
         }
 
         public void Edit(CustomerModel customerModel)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"UPDATE Customer SET 
+                                        Customer_FirstName = @firstName,
+                                        Customer_LastName = @lastName, 
+                                        Customer_Address = @address, 
+                                        Customer_Birthday = @birthday, 
+                                        Customer_PhoneNumber = @phoneNumber, 
+                                        Customer_Email = @email 
+                                        WHERE Customer_Id = @id";
+                command.Parameters.Add("@firstName", SqlDbType.NVarChar).Value = customerModel.FirstName;
+                command.Parameters.Add("@lastName", SqlDbType.NVarChar).Value = customerModel.LastName;
+                command.Parameters.Add("@address", SqlDbType.NVarChar).Value = customerModel.Address;
+                command.Parameters.Add("@birthday", SqlDbType.DateTime).Value = customerModel.Birthday;
+                command.Parameters.Add("@phoneNumber", SqlDbType.NVarChar).Value = customerModel.PhoneNumber;
+                command.Parameters.Add("@email", SqlDbType.NVarChar).Value = customerModel.Email;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = customerModel.Id;
+
+                command.ExecuteNonQuery();
+            }
+
         }
 
         public IEnumerable<CustomerModel> GetAll()
@@ -46,13 +93,13 @@ namespace Supermarket_mvp._Repositories
                     {
                         var customerModel = new CustomerModel();
                         customerModel.Id = (int)reader["Customer_Id"];
-                        customerModel.DocumentNumber = reader["Customer_Document"].ToString();
-                        customerModel.FirstName = reader["Customer_FirstName"].ToString();
-                        customerModel.LastName = reader["Customer_LastName"].ToString();
-                        customerModel.Address = reader["Customer_Address"].ToString();
+                        customerModel.DocumentNumber = reader["Customer_Document"].ToString().Trim();
+                        customerModel.FirstName = reader["Customer_FirstName"].ToString().Trim();
+                        customerModel.LastName = reader["Customer_LastName"].ToString().Trim();
+                        customerModel.Address = reader["Customer_Address"].ToString().Trim();
                         customerModel.Birthday = reader["Customer_Birthday"] as DateTime?;
-                        customerModel.PhoneNumber = reader["Customer_PhoneNumber"].ToString();
-                        customerModel.Email = reader["Customer_Email"].ToString();
+                        customerModel.PhoneNumber = reader["Customer_PhoneNumber"].ToString().Trim();
+                        customerModel.Email = reader["Customer_Email"].ToString().Trim();
 
                         customerList.Add(customerModel);
                     }
@@ -84,13 +131,13 @@ namespace Supermarket_mvp._Repositories
                     {
                         var customerModel = new CustomerModel();
                         customerModel.Id = (int)reader["Customer_Id"];
-                        customerModel.DocumentNumber = reader["Customer_Document"].ToString();
-                        customerModel.FirstName = reader["Customer_FirstName"].ToString();
-                        customerModel.LastName = reader["Customer_LastName"].ToString();
-                        customerModel.Address = reader["Customer_Address"].ToString();
+                        customerModel.DocumentNumber = reader["Customer_Document"].ToString().Trim();
+                        customerModel.FirstName = reader["Customer_FirstName"].ToString().Trim();
+                        customerModel.LastName = reader["Customer_LastName"].ToString().Trim();
+                        customerModel.Address = reader["Customer_Address"].ToString().Trim();
                         customerModel.Birthday = reader["Customer_Birthday"] as DateTime?;
-                        customerModel.PhoneNumber = reader["Customer_PhoneNumber"].ToString();
-                        customerModel.Email = reader["Customer_Email"].ToString();
+                        customerModel.PhoneNumber = reader["Customer_PhoneNumber"].ToString().Trim();
+                        customerModel.Email = reader["Customer_Email"].ToString().Trim();
                         customersList.Add(customerModel);
                     }
                 }

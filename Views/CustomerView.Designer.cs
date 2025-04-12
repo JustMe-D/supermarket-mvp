@@ -283,6 +283,7 @@
             // 
             TxtCustomerEmail.Location = new Point(23, 179);
             TxtCustomerEmail.Name = "TxtCustomerEmail";
+            TxtCustomerEmail.PlaceholderText = "example@gmail.com";
             TxtCustomerEmail.Size = new Size(242, 27);
             TxtCustomerEmail.TabIndex = 13;
             // 
@@ -326,6 +327,7 @@
             TxtCustomerDocument.Name = "TxtCustomerDocument";
             TxtCustomerDocument.Size = new Size(242, 27);
             TxtCustomerDocument.TabIndex = 7;
+            
             // 
             // label6
             // 
@@ -372,8 +374,11 @@
             // 
             TxtCustomerId.Location = new Point(23, 45);
             TxtCustomerId.Name = "TxtCustomerId";
+            TxtCustomerId.ReadOnly = true;
             TxtCustomerId.Size = new Size(195, 27);
             TxtCustomerId.TabIndex = 1;
+            TxtCustomerId.Text = "0";
+            TxtCustomerId.TextAlign = HorizontalAlignment.Right;
             // 
             // label3
             // 
